@@ -1,0 +1,10 @@
+syntax = "proto3";
+package sand;
+
+option go_package = "github.com/the-capt/SaND/api/proto/sand";
+
+
+message Range {
+    uint64 beginning = 1;
+    uint64 ending = 2;
+}
