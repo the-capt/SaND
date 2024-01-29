@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	pb "github.com/the-capt/SaND/pkg/proto/sand"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"github.com/the-capt/SaND/pkg/proto/sand"
 )
 
 func main() {
@@ -13,6 +13,9 @@ func main() {
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	log.Info().Msg("This is an Info message.")
 
-	rr := pb.Range{Beginning: 0, Ending: 1}
-	log.Info.Str("range", rr).Msg("")
+	rr := &sand.Range{Beginning: 0, Ending: 1}
+	log.Info().Str("range", rr.String()).Msg("")
+	if rr.Beginning == 0 {
+		log.Info().Msg("beginning is 0")
+	}
 }
