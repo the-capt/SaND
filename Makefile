@@ -6,4 +6,8 @@ proto:
 		   --proto_path=.
 
 gocode:
-	go build cmd/sand/sand.go
+	go build -o build cmd/sand/sand.go
+
+clean:
+	rm -f pkg/proto/sand/*.pb.go
+	rm -f build/*

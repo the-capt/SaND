@@ -22,3 +22,6 @@ go.work
 
 # generated protobufs
 pkg/proto/sand/*.pb.go
+
+# executables
+build/*

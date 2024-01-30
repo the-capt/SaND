@@ -3,8 +3,43 @@ package sand;
 
 option go_package = "/sand";
 
+message byte_provider {
+    string name = 1;
+}
 
-message Range {
+message address_range {
     uint64 beginning = 1;
     uint64 ending = 2;
+}
+
+message address_space {
+    string name = 1;
+    address_range space_span = 2;
+    bool is_primary_space = 3;
+    bool is_flat_file_space = 4;
+}
+
+message single_selection {
+    uint64 id = 1;
+    byte_provider provider = 2;
+    address_space space = 3;
+    address_range range = 4;
+}
+
+message multi_selection {
+    repeated single_selection selections = 1;
+}
+
+message location {
+    address_space space = 1;
+    uint64 address = 2;
+}
+message single_navigation {
+    uint64 id = 1;
+    byte_provider provider = 2;
+    repeated location locations = 3;
+}
+
+message multi_navigation {
+    repeated single_navigation navigations = 1;
 }

@@ -13,7 +13,7 @@ func main() {
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	log.Info().Msg("This is an Info message.")
 
-	rr := &sand.Range{Beginning: 0, Ending: 1}
+	rr := &sand.AddressRange{Beginning: 0, Ending: 1}
 	log.Info().Str("range", rr.String()).Msg("")
 	if rr.Beginning == 0 {
 		log.Info().Msg("beginning is 0")
