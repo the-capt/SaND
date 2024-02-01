@@ -1,45 +1,28 @@
 syntax = "proto3";
+
 package sand;
 
 option go_package = "/sand";
-
-message byte_provider {
-    string name = 1;
-}
 
 message address_range {
     uint64 beginning = 1;
     uint64 ending = 2;
 }
 
-message address_space {
-    string name = 1;
-    address_range space_span = 2;
-    bool is_primary_space = 3;
-    bool is_flat_file_space = 4;
-}
-
-message single_selection {
-    uint64 id = 1;
-    byte_provider provider = 2;
-    address_space space = 3;
-    address_range range = 4;
-}
-
 message multi_selection {
-    repeated single_selection selections = 1;
+    string address_space_name = 1;
+    address_range address_space_extent = 2;
+    bool is_synthetic = 3;
+    repeated address_range selection_ranges = 4;
 }
 
 message location {
-    address_space space = 1;
+    string address_space_name = 1;
     uint64 address = 2;
 }
-message single_navigation {
-    uint64 id = 1;
-    byte_provider provider = 2;
-    repeated location locations = 3;
-}
 
-message multi_navigation {
-    repeated single_navigation navigations = 1;
+message sand_update {
+    string provider_name = 1;
+    repeated multi_selection selections = 2;
+    location current_location = 3;
 }
